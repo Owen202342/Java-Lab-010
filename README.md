@@ -86,7 +86,7 @@ Wolf makes sound HOWL!!!
 
 * Trace through the code in WeatherStation and make sure you understand what you have to work with!
 * Look at the Display.java **interface** and in your own words, write below why you think we are declaring an **interface**.
-
+    * Because we want to be able to use the update and display functions on all the different classes we are making and we want to be able to use the classes indiscrimantely.
 ## Part 2 - Create 3 Classes that **Implement** Display.java
 
 ![Program Design](images/uml_model.png)

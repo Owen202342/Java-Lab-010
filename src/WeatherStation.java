@@ -16,6 +16,9 @@ public class WeatherStation {
     private float humidity;
     private float pressure;
 
+    private float temp_min;
+    private float temp_max;
+
     public WeatherStation() {
         displays = new ArrayList<Display>();
         gson = new Gson();
@@ -32,7 +35,7 @@ public class WeatherStation {
         displays.remove(d);
     }
 
-    public void notifyDisplays() {
+    public void notifyDisplays() throws IOException {
         for(Display d : displays) {
             d.update();
         }
@@ -50,6 +53,10 @@ public class WeatherStation {
         return pressure;
     }
 
+    public float getTemp_min() {return temp_min;}
+
+    public float getTemp_max() {return temp_max;}
+
     public static float hPaToInHG(float hPa) {
         return hPa * 0.029529983071445f;
     }
@@ -61,7 +68,13 @@ public class WeatherStation {
 
         this.temperature = main.get("temp").getAsFloat();
         this.humidity = main.get("humidity").getAsFloat();
+        this.temp_max = main.get("temp_max").getAsFloat();
+        this.temp_min = main.get("temp_min").getAsFloat();
         this.pressure = WeatherStation.hPaToInHG(main.get("pressure").getAsFloat());
+
         notifyDisplays();
     }
+
+
+
 }
